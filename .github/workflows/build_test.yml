@@ -1,14 +1,11 @@
 name: Build and Test React Web Application
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [main]
   pull_request:
     branches: [main]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
     name: Build
@@ -27,13 +24,10 @@ jobs:
         run: npm ci
 
       - name: Linting code
-        uses: tinovyatkin/action-eslint@v1
-        with:
-          repo-token: ${{secrets.GH_TOKEN}}
-          check-name: eslint
-
-      - name: Building project
-        run: npm run build
+        run: npm run lint
 
       - name: Running tests
         run: npm run test
+
+      - name: Building project
+        run: npm run build

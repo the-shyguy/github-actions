@@ -1,33 +1,30 @@
-# todolist
+# React + TypeScript + Vite
 
-A React App to Monitor your to do list
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Documents
+Currently, two official plugins are available:
 
-- [Chapter 01: Create React App](docs/chapter_01_create_app.md)
-- [Chapter 02: Test React App using Jest](docs/chapter_02_testing_using_jest.md)
-- [Chapter 03: Build and Test React App using GitHub Actions](docs/chapter_03_build_test_react_app.md)
-- [Chapter 04: Deploy React App using GitHub Actions](docs/chapter_04_deploy_react_app.md)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### `npm start`
+## Expanding the ESLint configuration
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Configure the top-level `parserOptions` property like this:
 
-### `npm test`
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

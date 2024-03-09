@@ -17,19 +17,19 @@ class AddItem extends React.Component<{ addItem: any }, Item> {
     this.addItem = this.addItem.bind(this);
   }
 
-  setTask(evt: any) {
+  setTask(evt: React.ChangeEvent<HTMLElement>) {
     this.setState({
-      task: evt.target.value,
+      task: (evt.target as HTMLInputElement).value,
     });
   }
 
-  setPriority(evt: any) {
+  setPriority(evt: React.ChangeEvent<HTMLElement>) {
     this.setState({
-      priority: parseInt(evt.target.value),
+      priority: parseInt((evt.target as HTMLInputElement).value),
     });
   }
 
-  addItem(evt: any) {
+  addItem() {
     const item = this.state;
     if (isValid(item)) {
       this.props.addItem(item);

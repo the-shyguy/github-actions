@@ -5,20 +5,7 @@ export interface Item {
   priority: number;
 }
 
-const getTableStyleProps = (): {} => {
-  return {
-    style: {
-      width: "100%",
-      fontFamily: "arial, sans-serif",
-      borderCollapse: "collapse",
-      textAlign: "left",
-      padding: "8px",
-      border: " 1px solid #dddddd",
-    },
-  };
-};
-
-class ToDoList extends React.Component<{ items: Item[] }, {}> {
+class ToDoList extends React.Component<{ items: Item[] }> {
   render() {
     const { items } = this.props;
 
@@ -27,7 +14,16 @@ class ToDoList extends React.Component<{ items: Item[] }, {}> {
     }
     const sortedItems = sortItems(items);
     return (
-      <table {...getTableStyleProps()}>
+      <table
+        style={{
+          width: "100%",
+          fontFamily: "arial, sans-serif",
+          borderCollapse: "collapse",
+          textAlign: "left",
+          padding: "8px",
+          border: " 1px solid #dddddd",
+        }}
+      >
         <thead>
           <tr key={`task_prioirity`}>
             <th>Task</th>
