@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: react-app-rollout
+spec:
+  replicas: 2
+  strategy:
+    blueGreen:
+      activeService: react-app-active
+      previewService: react-app-preview
+  analysis:
+    template:
+      metadata:
+        labels:
+          app: react-app-rollout
+      spec:
+        containers:
+          - name: react-app
+            image: theshyguy/react-web-app:latest
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 80
