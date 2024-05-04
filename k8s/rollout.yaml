@@ -6,21 +6,19 @@ spec:
   selector:
     matchLabels:
       app: react-app
-  template:
-    metadata:
-      labels:
-        app: react-app
   replicas: 2
   strategy:
     blueGreen:
       activeService: react-app-active
       previewService: react-app-preview
-  analysis:
-    template:
-      spec:
-        containers:
-          - name: react-app
-            image: theshyguy/react-web-app:latest
-            imagePullPolicy: Always
-            ports:
-              - containerPort: 80
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+        - name: react-app
+          image: theshyguy/react-web-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
