@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: react-app-service
+  name: react-app-active
 spec:
   selector:
     app: react-app
@@ -10,4 +10,18 @@ spec:
       port: 80
       targetPort: 80
       nodePort: 30000
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-app-preview
+spec:
+  selector:
+    app: react-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30001
   type: NodePort
