@@ -3,6 +3,9 @@ kind: Rollout
 metadata:
   name: react-app-rollout
 spec:
+  selector:
+    matchLabels:
+      app: react-app
   replicas: 2
   strategy:
     blueGreen:
@@ -10,9 +13,6 @@ spec:
       previewService: react-app-preview
   analysis:
     template:
-      metadata:
-        labels:
-          app: react-app-rollout
       spec:
         containers:
           - name: react-app
